@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="player-container">
+        <div class="sidebar">
+            <div class="logo">
+                <h1>🎵 Music Player</h1>
+            </div>
+            <div class="sidebar-content">
+                <div class="playlists-section">
+                    <div class="playlists-header">
+                        <h3>Playlists</h3>
+                        <button id="createPlaylistBtn" class="btn-icon" title="Create New Playlist">➕</button>
+                    </div>
+                    <div id="playlistsList" class="playlists-list"></div>
+                </div>
+                <div class="playlist-controls">
+                    <button id="selectFiles" class="btn-primary">
+                        🎵 Add Audio Files
+                    </button>
+                </div>
+                <div id="playlist" class="playlist">
+                    <h3 id="currentPlaylistName">Your Library</h3>
+                    <div id="playlistItems" class="playlist-items"></div>
+                </div>
+                <div class="sidebar-footer">
+                    <button id="addMoreFiles" class="btn-secondary">
+                        ➕ Add More Songs
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="now-playing-header">
+                <h2 id="nowPlayingTitle">Add audio files to start</h2>
+                <p id="nowPlayingArtist" class="subtitle"></p>
+            </div>
+
+            <div class="album-art-container">
+                <div id="albumArt" class="album-art">
+                    <div class="album-art-placeholder">🎵</div>
+                    <img id="albumArtImage" style="display: none;" alt="Album Art">
+                    <button id="albumArtBtn" class="album-art-btn" title="Change Album Art">📷</button>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <div class="progress-container">
+                    <span id="currentTime" class="time">0:00</span>
+                    <div class="progress-bar-container">
+                        <div id="progressBar" class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <span id="totalTime" class="time">0:00</span>
+                </div>
+
+                <div class="player-controls">
+                    <button id="shuffleBtn" class="control-btn" title="Shuffle">🔀</button>
+                    <button id="prevBtn" class="control-btn" title="Previous">⏮</button>
+                    <button id="playPauseBtn" class="control-btn play-pause" title="Play/Pause">▶</button>
+                    <button id="nextBtn" class="control-btn" title="Next">⏭</button>
+                    <button id="repeatBtn" class="control-btn" title="Repeat">🔁</button>
+                </div>
+
+                <div class="volume-control">
+                    <span class="volume-icon">🔊</span>
+                    <input type="range" id="volumeSlider" min="0" max="100" value="70" class="volume-slider">
+                    <span id="volumeValue" class="volume-value">70%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audioPlayer" preload="metadata" playsinline></audio>
+    <input type="file" id="fileInput" multiple accept="audio/*" style="display: none;">
+    <input type="file" id="directoryInput" webkitdirectory directory multiple accept="audio/*" style="display: none;">
+    <input type="file" id="albumArtInput" accept="image/*" style="display: none;">
+    
+    <!-- Playlist Name Modal -->
+    <div id="playlistModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Create New Playlist</h3>
+            <input type="text" id="playlistNameInput" placeholder="Enter playlist name" maxlength="50">
+            <div class="modal-buttons">
+                <button id="modalCancel" class="btn-secondary">Cancel</button>
+                <button id="modalConfirm" class="btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
